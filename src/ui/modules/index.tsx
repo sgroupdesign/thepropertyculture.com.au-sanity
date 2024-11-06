@@ -1,6 +1,7 @@
 import AccordionList from './AccordionList'
 import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
+import PostContent from './blog/PostContent'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
 import CardList from './CardList'
@@ -8,17 +9,16 @@ import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
 import FlagList from './FlagList'
 import Hero from './Hero'
-import HeroSplit from './HeroSplit'
 import HeroSaaS from './HeroSaaS'
+import HeroSplit from './HeroSplit'
 import LogoList from './LogoList'
-import PostContent from './blog/PostContent'
 import PricingList from './PricingList'
 import RichtextModule from './RichtextModule'
 import StatList from './StatList'
 import StepList from './StepList'
 import TabbedContent from './TabbedContent'
-import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
+import TestimonialList from './TestimonialList'
 
 export default function Modules({
 	modules,
@@ -30,7 +30,7 @@ export default function Modules({
 	post?: Sanity.BlogPost
 }) {
 	return (
-		<>
+		<div className="py-14">
 			{modules?.map((module) => {
 				switch (module._type) {
 					case 'accordion-list':
@@ -86,6 +86,6 @@ export default function Modules({
 						return <div data-type={module._type} key={module._key} />
 				}
 			})}
-		</>
+		</div>
 	)
 }

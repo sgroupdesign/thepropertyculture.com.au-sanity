@@ -1,5 +1,5 @@
+import { VscEdit, VscEyeClosed, VscHome, VscQuestion } from 'react-icons/vsc'
 import { defineField, defineType } from 'sanity'
-import { VscHome, VscEyeClosed, VscQuestion, VscEdit } from 'react-icons/vsc'
 
 export default defineType({
 	name: 'page',
@@ -15,6 +15,11 @@ export default defineType({
 			type: 'string',
 			group: 'content',
 			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
+			name: 'pageHeaderImage',
+			type: 'image',
+			group: 'content',
 		}),
 		defineField({
 			name: 'modules',

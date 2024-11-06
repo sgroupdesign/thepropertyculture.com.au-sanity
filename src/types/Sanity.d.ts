@@ -6,14 +6,15 @@ declare global {
 		// documents
 
 		type Site = SanityDocument<{
-			title: string
+			companyName: string
 			logo?: Logo
 			announcements?: Announcement[]
 			ctas?: CTA[]
 			headerMenu?: Navigation
 			footerMenu?: Navigation
 			social?: Navigation
-			copyright?: any
+			address?: string
+			phone?: string
 			ogimage?: string
 		}>
 

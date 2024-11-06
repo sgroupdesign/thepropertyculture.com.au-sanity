@@ -1,23 +1,23 @@
 // documents
-import site from './documents/site'
-import page from './documents/page'
-import blogPost from './documents/blog.post'
-import blogCategory from './documents/blog.category'
-import navigation from './documents/navigation'
 import announcement from './documents/announcement'
-import redirect from './documents/redirect'
+import blogCategory from './documents/blog.category'
+import blogPost from './documents/blog.post'
 import logo from './documents/logo'
+import navigation from './documents/navigation'
+import page from './documents/page'
 import person from './documents/person'
 import pricing from './documents/pricing'
+import redirect from './documents/redirect'
 import reputation from './documents/reputation'
+import site from './documents/site'
 import testimonial from './documents/testimonial'
 
 // objects
 import cta from './objects/cta'
-import uid from './objects/uid'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import metadata from './objects/metadata'
+import uid from './objects/uid'
 
 // modules
 import accordionList from './modules/accordion-list'
@@ -39,8 +39,8 @@ import richtextModule from './modules/richtext-module'
 import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 import tabbedContent from './modules/tabbed-content'
-import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
+import testimonialFeatured from './modules/testimonial.featured'
 
 export const schemaTypes = [
 	// documents

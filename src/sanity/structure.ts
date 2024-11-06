@@ -1,8 +1,8 @@
-import { group, singleton } from './lib/utils'
 import type { StructureResolver } from 'sanity/structure'
+import { group, singleton } from './lib/utils'
 
-import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
 import { BsDatabaseAdd } from 'react-icons/bs'
+import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
 
 export const structure: StructureResolver = (S) =>
 	S.list()
@@ -22,10 +22,6 @@ export const structure: StructureResolver = (S) =>
 			S.divider(),
 
 			group(S, 'Miscellaneous', [
-				S.documentTypeListItem('logo').title('Logos'),
-				S.documentTypeListItem('person').title('People'),
-				S.documentTypeListItem('pricing').title('Pricing tiers'),
-				S.documentTypeListItem('reputation'),
 				S.documentTypeListItem('testimonial').title('Testimonials'),
 			]).icon(BsDatabaseAdd),
 		])

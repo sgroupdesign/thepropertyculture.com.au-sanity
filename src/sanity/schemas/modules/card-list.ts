@@ -1,6 +1,6 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi'
 import { count, getBlockText } from '@/sanity/lib/utils'
+import { TfiLayoutMediaLeftAlt } from 'react-icons/tfi'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'card-list',
@@ -34,16 +34,21 @@ export default defineType({
 					type: 'object',
 					fields: [
 						defineField({
-							name: 'image',
-							type: 'image',
-							options: {
-								hotspot: true,
-							},
+							name: 'images',
+							type: 'array',
+							of: [
+								{
+									type: 'image',
+									options: {
+										hotspot: true,
+									},
+								},
+							],
+							validation: (rule) => rule.required().max(2),
 						}),
 						defineField({
-							name: 'content',
-							type: 'array',
-							of: [{ type: 'block' }],
+							name: 'title',
+							type: 'string',
 						}),
 						defineField({
 							name: 'ctas',

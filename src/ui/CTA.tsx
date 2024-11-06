@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import processUrl from '@/lib/processUrl'
 import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
+import Link from 'next/link'
 
 export default function CTA({
 	link,

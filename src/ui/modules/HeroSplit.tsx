@@ -1,9 +1,9 @@
-import { PortableText } from 'next-sanity'
-import Pretitle from '@/ui/Pretitle'
-import Reputation from '@/ui/Reputation'
+import { cn } from '@/lib/utils'
 import CTAList from '@/ui/CTAList'
 import Img from '@/ui/Img'
-import { cn } from '@/lib/utils'
+import Pretitle from '@/ui/Pretitle'
+import Reputation from '@/ui/Reputation'
+import { PortableText } from 'next-sanity'
 
 export default function HeroSplit({
 	pretitle,
@@ -31,7 +31,7 @@ export default function HeroSplit({
 				<Img image={image} imageWidth={1200} />
 			</figure>
 
-			<div className="richtext mx-auto w-full max-w-lg [&_:is(h1,h2)]:text-balance">
+			<div className="richtext mx-auto w-full [&_:is(h1,h2)]:text-balance">
 				<Pretitle>{pretitle}</Pretitle>
 				<PortableText
 					value={content}

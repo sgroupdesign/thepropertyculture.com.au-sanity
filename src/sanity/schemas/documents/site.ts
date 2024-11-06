@@ -10,7 +10,7 @@ export default defineType({
 	],
 	fields: [
 		defineField({
-			name: 'title',
+			name: 'companyName',
 			type: 'string',
 			group: 'general',
 			validation: (Rule) => Rule.required(),
@@ -22,6 +22,16 @@ export default defineType({
 				collapsable: true,
 				collapsed: true,
 			},
+			group: 'general',
+		}),
+		defineField({
+			name: 'address',
+			type: 'string',
+			group: 'general',
+		}),
+		defineField({
+			name: 'phone',
+			type: 'string',
 			group: 'general',
 		}),
 		defineField({
@@ -57,17 +67,6 @@ export default defineType({
 			type: 'reference',
 			to: [{ type: 'navigation' }],
 			group: 'navigation',
-		}),
-		defineField({
-			name: 'copyright',
-			type: 'array',
-			of: [
-				{
-					type: 'block',
-					styles: [{ title: 'Normal', value: 'normal' }],
-				},
-			],
-			group: 'general',
 		}),
 		defineField({
 			name: 'ogimage',

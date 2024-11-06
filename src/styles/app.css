@@ -52,15 +52,15 @@
 	}
 
 	.h1 {
-		@apply _h text-3xl;
+		@apply _h text-5xl;
 	}
 
 	.h2 {
-		@apply _h text-2xl;
+		@apply _h text-4xl;
 	}
 
 	.h3 {
-		@apply _h text-xl;
+		@apply _h text-3xl;
 	}
 
 	.h4 {
@@ -91,29 +91,12 @@
 
 	/* ctas, links */
 
-	._btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.5em 1em;
-		text-align: center;
-		text-shadow: none;
-	}
-
-	.action {
-		@apply _btn text-balance rounded border border-transparent bg-accent text-white;
-	}
-
-	.action-outline {
-		@apply _btn text-balance rounded border border-accent/10 bg-canvas/50 to-canvas text-accent;
-	}
-
-	.ghost {
-		@apply _btn frosted-glass rounded hover:bg-accent/5;
+	.btn {
+		@apply border border-licorice bg-coffee px-5 py-3 font-medium uppercase text-licorice;
 	}
 
 	.link {
-		text-decoration: underline;
+		@apply text-coffee no-underline;
 
 		&:hover {
 			text-decoration-thickness: 2px;
@@ -128,7 +111,7 @@
 	/* layout */
 
 	.section {
-		@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
+		@apply mx-auto max-w-screen-2xl p-8 max-md:px-4;
 	}
 
 	/* richtext */
@@ -137,7 +120,7 @@
 		@apply space-y-2 leading-relaxed;
 
 		& :is(h1, h2, h3, h4, h5, h6) strong {
-			@apply text-gradient;
+			@apply font-normal text-licorice;
 		}
 
 		& h1 {
@@ -145,23 +128,23 @@
 		}
 
 		& h2 {
-			@apply h2;
+			@apply h2 font-normal text-licorice;
 		}
 
 		& h3 {
-			@apply h3;
+			@apply h3 font-normal text-licorice;
 		}
 
 		& h4 {
-			@apply h4;
+			@apply h4 font-normal text-licorice;
 		}
 
 		& h5 {
-			@apply h5;
+			@apply h5 font-normal text-licorice;
 		}
 
 		& h6 {
-			@apply h6;
+			@apply h6 font-normal text-licorice;
 		}
 
 		& :is(ul, ol) {
