@@ -1,7 +1,6 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { GoNumber } from 'react-icons/go'
-import { textAlign } from '../fragments/fields/alignment'
 import { count, getBlockText } from '@/sanity/lib/utils'
+import { GoNumber } from 'react-icons/go'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'stat-list',
@@ -24,34 +23,56 @@ export default defineType({
 					type: 'object',
 					fields: [
 						defineField({
-							name: 'value',
+							name: 'icon',
+							type: 'icon',
+						}),
+						defineField({
+							name: 'heading',
 							type: 'string',
 						}),
 						defineField({
-							name: 'subValue',
-							type: 'string',
-						}),
-						defineField({
-							name: 'text',
-							type: 'string',
+							name: 'description',
+							type: 'array',
+							of: [{ type: 'block' }],
 						}),
 					],
 					preview: {
 						select: {
-							value: 'value',
-							subValue: 'subValue',
-							subtitle: 'text',
+							heading: 'heading',
+							subtitle: 'description',
 						},
-						prepare: ({ value, subValue, subtitle }) => ({
-							title: [value, subValue].filter(Boolean).join(' '),
-							subtitle,
+						prepare: ({ heading }) => ({
+							title: heading,
 						}),
 					},
 				}),
 			],
 			group: 'content',
 		}),
-		defineField(textAlign),
+		defineField({
+			name: 'backgroundColour',
+			type: 'string',
+			options: {
+				list: ['white', 'coffee'],
+				layout: 'radio',
+			},
+			initialValue: 'white',
+			group: 'options',
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
+			group: 'options',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
+		}),
 	],
 	preview: {
 		select: {

@@ -1,14 +1,20 @@
+import processMetadata from '@/lib/processMetadata'
 import client from '@/sanity/client'
 import { groq, sanityFetch } from '@/sanity/lib/fetch'
 import { modulesQuery } from '@/sanity/lib/queries'
-import { notFound } from 'next/navigation'
 import Modules from '@/ui/modules'
-import processMetadata from '@/lib/processMetadata'
+import PageHeader from '@/ui/PageHeader'
+import { notFound } from 'next/navigation'
 
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
 	if (!page) notFound()
-	return <Modules modules={page?.modules} page={page} />
+	return (
+		<div className="">
+			<PageHeader image={page?.pageHeaderImage} />
+			<Modules modules={page?.modules} page={page} />
+		</div>
+	)
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -37,6 +43,7 @@ async function getPage(params: { slug?: string[] }) {
 			!(metadata.slug.current in ['index', '404', 'blog/*'])
 		][0]{
 			...,
+			pageHeaderImage,
 			modules[]{ ${modulesQuery} },
 			metadata {
 				...,

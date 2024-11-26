@@ -1,28 +1,29 @@
 'use client'
 
-import { defineConfig } from 'sanity'
-import { projectId, dataset } from '@/sanity/lib/env'
-import { structureTool } from 'sanity/structure'
-import { structure } from './src/sanity/structure'
-import { presentationTool } from 'sanity/presentation'
-import { resolve } from './src/sanity/presentation/resolve'
+import { dataset, projectId } from '@/sanity/lib/env'
+import { codeInput } from '@sanity/code-input'
 import {
 	dashboardTool,
 	projectInfoWidget,
 	projectUsersWidget,
 } from '@sanity/dashboard'
-import { sanitypressGuideWidget } from './src/sanity/sanitypressGuideWidget'
-import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
 import { visionTool } from '@sanity/vision'
-import { codeInput } from '@sanity/code-input'
+import { defineConfig } from 'sanity'
+import { vercelWidget } from 'sanity-plugin-dashboard-widget-vercel'
+import { iconify } from 'sanity-plugin-iconify'
+import { presentationTool } from 'sanity/presentation'
+import { structureTool } from 'sanity/structure'
+import { resolve } from './src/sanity/presentation/resolve'
+import { sanitypressGuideWidget } from './src/sanity/sanitypressGuideWidget'
 import { schemaTypes } from './src/sanity/schemas'
+import { structure } from './src/sanity/structure'
 
 const singletonTypes = ['site']
 
 export default defineConfig({
 	projectId,
 	dataset,
-	basePath: '/admin',
+	basePath: '/studio',
 
 	plugins: [
 		structureTool({
@@ -56,6 +57,10 @@ export default defineConfig({
 		}),
 		visionTool(),
 		codeInput(),
+		iconify({
+			collections: ['iconoir'],
+			showName: true,
+		}),
 	],
 
 	tasks: { enabled: false },

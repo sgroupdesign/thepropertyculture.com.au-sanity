@@ -1,9 +1,6 @@
-import { PortableText } from 'next-sanity'
-import AnchoredHeading from './AnchoredHeading'
-import Image from './Image'
-import Code from './Code'
-import CustomHTML from '@/ui/modules/CustomHTML'
 import { cn } from '@/lib/utils'
+import { PortableText } from 'next-sanity'
+import Image from './Image'
 
 export default function Content({
 	value,
@@ -21,11 +18,6 @@ export default function Content({
 				value={value}
 				components={{
 					block: {
-						h2: (node) => <AnchoredHeading as="h2" {...node} />,
-						h3: (node) => <AnchoredHeading as="h3" {...node} />,
-						h4: (node) => <AnchoredHeading as="h4" {...node} />,
-						h5: (node) => <AnchoredHeading as="h5" {...node} />,
-						h6: (node) => <AnchoredHeading as="h6" {...node} />,
 						blockquote: ({ children }) => (
 							<blockquote className="border-l-2 pl-4">
 								<p>{children}</p>
@@ -34,13 +26,6 @@ export default function Content({
 					},
 					types: {
 						image: Image,
-						code: Code,
-						'custom-html': ({ value }) => (
-							<CustomHTML
-								className="has-[table]:md:mx-auto has-[table]:md:[grid-column:bleed]"
-								{...value}
-							/>
-						),
 					},
 				}}
 			/>

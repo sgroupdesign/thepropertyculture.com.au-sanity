@@ -1,23 +1,29 @@
+import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
-import { cn } from '@/lib/utils'
 import { stegaClean } from 'next-sanity'
 
 export default async function Menu() {
 	const { footerMenu } = await getSite()
 
 	return (
-		<nav className="flex flex-wrap items-start gap-x-12 gap-y-6 max-sm:flex-col">
+		<nav className="flex flex-wrap items-start gap-x-12 gap-y-6 font-sans max-sm:flex-col">
 			{footerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':
-						return <CTA className="hover:link" link={item} key={key} />
+						return (
+							<CTA
+								className="font-semibold uppercase tracking-widest text-coffee hover:underline"
+								link={item}
+								key={key}
+							/>
+						)
 
 					case 'link.list':
 						return (
 							<div className="space-y-2 text-left" key={key}>
-								<div className="technical text-xs">
-									<CTA link={item.link}>
+								<div className="font-semibold uppercase tracking-widest text-coffee hover:underline">
+									<CTA link={item.link} className="text-coffee">
 										{stegaClean(item.link?.label) || item.link.internal?.title}
 									</CTA>
 								</div>
@@ -27,7 +33,7 @@ export default async function Menu() {
 										<li key={key}>
 											<CTA
 												className={cn(
-													'inline-block py-px hover:underline',
+													'inline-block py-px font-light text-coffee hover:underline',
 													link.external?.startsWith('http') && 'is-external',
 												)}
 												link={link}

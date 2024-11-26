@@ -1,9 +1,9 @@
 import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import { stegaClean } from 'next-sanity'
 import FilterList from '../BlogList/FilterList'
 import PostPreviewLarge from '../PostPreviewLarge'
 import Paginated from './Paginated'
 import sortFeaturedPosts from './sortFeaturedPosts'
-import { stegaClean } from 'next-sanity'
 
 export default async function BlogFrontpage({
 	mainPost,
@@ -33,7 +33,6 @@ export default async function BlogFrontpage({
 	return (
 		<section className="section space-y-12">
 			<PostPreviewLarge post={firstPost} />
-			<hr />
 			<FilterList />
 			<Paginated
 				posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}

@@ -1,7 +1,7 @@
-import { PortableText, groq } from 'next-sanity'
 import { fetchSanity } from '@/sanity/lib/fetch'
 import { linkQuery } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
+import { PortableText, groq } from 'next-sanity'
 
 export default async function Announcement() {
 	const announcements = await fetchSanity<Sanity.Announcement[]>(
@@ -17,22 +17,16 @@ export default async function Announcement() {
 
 	if (!announcements) return null
 
-	const active = announcements.find(({ start, end }) => {
-		return (
-			(!start || new Date(start) < new Date()) &&
-			(!end || new Date(end) > new Date())
-		)
-	})
-
-	if (!active) return null
-
 	return (
-		<aside className="flex items-center justify-center gap-x-4 text-balance bg-accent p-2 text-center text-canvas max-md:text-sm md:gap-x-6">
+		<aside className="flex items-center justify-center gap-x-4 bg-coffee/60 p-4 text-center font-light text-licorice max-md:text-sm md:gap-x-6">
 			<div className="anim-fade-to-r [&_a]:link">
-				<PortableText value={active.content} />
+				<PortableText value={announcements[0].content} />
 			</div>
 
-			<CTA className="link anim-fade-to-l shrink" link={active.cta} />
+			<CTA
+				className="link border-b border-terracotta text-terracotta"
+				link={announcements[0].cta}
+			/>
 		</aside>
 	)
 }

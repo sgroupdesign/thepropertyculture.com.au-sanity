@@ -1,12 +1,11 @@
-import { defineField, defineType } from 'sanity'
+import { getBlockText } from '@/sanity/lib/utils'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { reputationBlock } from '../documents/reputation'
+import { defineField, defineType } from 'sanity'
 import {
-	textAlign,
 	alignItems,
 	alignmentFieldset,
+	textAlign,
 } from '../fragments/fields/alignment'
-import { getBlockText } from '@/sanity/lib/utils'
 
 export default defineType({
 	name: 'hero',
@@ -18,7 +17,7 @@ export default defineType({
 		{ name: 'image' },
 		{ name: 'options' },
 	],
-	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 2 } }],
+	fieldsets: [alignmentFieldset, { name: 'image', options: { columns: 1 } }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -28,7 +27,7 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }, reputationBlock],
+			of: [{ type: 'block' }],
 			group: 'content',
 		}),
 		defineField({
@@ -59,30 +58,28 @@ export default defineType({
 					},
 					initialValue: 'lazy',
 				}),
+				defineField({
+					name: 'overlayOpacity',
+					type: 'string',
+					options: {
+						list: [
+							{ title: '0%', value: '0' },
+							{ title: '20%', value: '20' },
+							{ title: '40%', value: '40' },
+							{ title: '60%', value: '60' },
+							{ title: '80%', value: '80' },
+							{ title: '100%', value: '100' },
+						],
+					},
+				}),
 			],
 			group: 'image',
 			fieldset: 'image',
 		}),
 		defineField({
-			name: 'bgImageMobile',
-			title: 'Background image (mobile)',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			fields: [
-				defineField({
-					name: 'loading',
-					type: 'string',
-					options: {
-						list: ['lazy', 'eager'],
-						layout: 'radio',
-					},
-					initialValue: 'lazy',
-				}),
-			],
-			group: 'image',
-			fieldset: 'image',
+			name: 'darkMode',
+			type: 'boolean',
+			group: 'options',
 		}),
 		defineField({
 			...textAlign,
@@ -91,6 +88,12 @@ export default defineType({
 		defineField({
 			...alignItems,
 			fieldset: 'alignment',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
 		}),
 	],
 	preview: {

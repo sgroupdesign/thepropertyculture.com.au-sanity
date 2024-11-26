@@ -1,8 +1,8 @@
-import { groq, sanityFetch } from '@/sanity/lib/fetch'
-import { PortableText, stegaClean } from 'next-sanity'
-import FilterList from '@/ui/modules/blog/BlogList/FilterList'
-import List from './List'
 import { cn } from '@/lib/utils'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import FilterList from '@/ui/modules/blog/BlogList/FilterList'
+import { PortableText, stegaClean } from 'next-sanity'
+import List from './List'
 
 export default async function BlogList({
 	intro,
@@ -54,9 +54,9 @@ export default async function BlogList({
 			<List
 				posts={data as Sanity.BlogPost[]}
 				className={cn(
-					'items-stretch gap-x-8 gap-y-12',
+					'items-stretch gap-x-12 gap-y-12',
 					stegaClean(layout) === 'grid'
-						? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
+						? 'grid grid-cols-1 md:grid-cols-3'
 						: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
 				)}
 			/>

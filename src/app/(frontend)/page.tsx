@@ -8,7 +8,7 @@ export default async function Page() {
 	const page = await getPage()
 	return (
 		<div className="">
-			<PageHeader pageHeaderImage={page?.pageHeaderImage} />
+			<PageHeader image={page?.pageHeaderImage} />
 			<Modules modules={page?.modules} />
 		</div>
 	)

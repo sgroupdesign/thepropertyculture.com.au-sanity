@@ -38,5 +38,19 @@ export const resolve: PresentationPluginOptions['resolve'] = {
 				],
 			}),
 		}),
+
+		person: defineLocations({
+			select: {
+				metadata: 'metadata',
+			},
+			resolve: (doc) => ({
+				locations: [
+					{
+						title: doc?.metadata?.title,
+						href: `/team/${doc?.metadata?.slug?.current}`,
+					},
+				],
+			}),
+		}),
 	},
 }

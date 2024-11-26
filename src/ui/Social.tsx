@@ -1,8 +1,9 @@
+import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import CTA from './CTA'
-import { cn } from '@/lib/utils'
 
 import {
+	FaEnvelope,
 	FaFacebookF,
 	FaGithub,
 	FaInstagram,
@@ -63,6 +64,8 @@ function Icon({
 		<FaXTwitter {...props} />
 	) : url?.includes('youtube.com') ? (
 		<FaYoutube {...props} />
+	) : url?.includes('youtube.com') ? (
+		<FaEnvelope {...props} />
 	) : (
 		<IoIosLink {...props} />
 	)

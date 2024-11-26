@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
 import usePagination from '@/lib/usePagination'
-import { categoryStore } from '../store'
+import { useEffect } from 'react'
 import List, { filterPosts } from '../BlogList/List'
+import { categoryStore } from '../store'
 
 export default function Paginated({
 	posts,
@@ -26,7 +26,7 @@ export default function Paginated({
 		<div className="relative space-y-12">
 			<List
 				posts={paginatedItems}
-				className="grid gap-x-8 gap-y-12 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
+				className="grid gap-x-8 gap-y-12 md:grid-cols-3"
 			/>
 
 			<Pagination

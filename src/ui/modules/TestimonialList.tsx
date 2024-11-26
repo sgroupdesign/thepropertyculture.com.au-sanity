@@ -1,70 +1,95 @@
-import { PortableText, stegaClean } from 'next-sanity'
-import Img from '@/ui/Img'
 import { cn } from '@/lib/utils'
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from '@/ui/components/carousel'
+import Img from '@/ui/Img'
+import { PortableText, stegaClean } from 'next-sanity'
 
 export default function TestimonialList({
 	intro,
 	testimonials,
-	layout,
+	backgroundColour,
+	centerAligned,
 }: Partial<{
 	intro: any
 	testimonials: Sanity.Testimonial[]
-	layout: 'grid' | 'carousel'
+	backgroundColour: any
+	centerAligned: boolean
 }>) {
-	const isCarousel = stegaClean(layout) === 'carousel'
-
 	return (
-		<section className="section space-y-8 text-center">
-			{intro && (
-				<header className="richtext">
-					<PortableText value={intro} />
-				</header>
+		<div
+			className={cn(
+				stegaClean(backgroundColour) === 'coffee'
+					? 'bg-coffee/20 py-10'
+					: 'bg-white py-10',
 			)}
-
-			<div
-				className={cn(
-					'gap-4 max-md:px-4',
-					isCarousel
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 md:gap-8 md:before:m-auto md:after:m-auto'
-						: 'max-md:carousel max-md:full-bleed grid max-md:pb-4 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
-				)}
-			>
-				{testimonials?.map(({ author, ...testimonial }, key) => (
-					<article
-						className="grid !basis-[min(450px,70vw)] place-content-center rounded border p-4"
-						key={key}
+		>
+			<section className="section space-y-8">
+				{intro && (
+					<header
+						className={cn(
+							'richtext max-w-screen-md',
+							centerAligned && 'mx-auto text-center',
+						)}
 					>
-						<blockquote className="space-y-6">
-							<div className="richtext text-balance">
-								<PortableText value={testimonial.content} />
-							</div>
+						<PortableText value={intro} />
+					</header>
+				)}
 
-							{author && (
-								<div className="inline-flex items-center gap-2">
-									<Img
-										className="size-[40px] rounded-full object-cover"
-										image={author?.image}
-										imageWidth={80}
-										alt={
-											[author?.name, author?.title]
-												.filter(Boolean)
-												.join(', ') || 'Author'
-										}
-									/>
-
-									<dl className="text-left">
-										<dt>{author?.name}</dt>
-
-										{author?.title && (
-											<dd className="text-sm">{author?.title}</dd>
-										)}
-									</dl>
-								</div>
-							)}
-						</blockquote>
-					</article>
-				))}
-			</div>
-		</section>
+				<Carousel>
+					<CarouselContent>
+						{testimonials?.map(({ author, ...testimonial }, key) => (
+							<CarouselItem className="md:basis-1/2 lg:basis-1/3">
+								<article
+									className="border-2 border-coffee/40 bg-white p-6 shadow-sm"
+									key={key}
+								>
+									{author && (
+										<header>
+											<div className="flex items-center gap-4">
+												<div className="relative flex size-[50px] items-center justify-center overflow-hidden rounded-full text-white">
+													{author?.image ? (
+														<Img
+															className="size-[50px] rounded-full object-cover"
+															image={author?.image}
+															imageWidth={80}
+															alt={
+																[author?.name].filter(Boolean).join(', ') ||
+																'Author'
+															}
+														/>
+													) : (
+														<span>{author?.name.substring(0, 1)}</span>
+													)}
+												</div>
+												<div className={cn(author?.image && 'text-left')}>
+													<p className="text-base font-semibold">
+														{author?.name}
+													</p>
+													{author?.name && (
+														<div className="text-sm">{author?.name}</div>
+													)}
+												</div>
+											</div>
+										</header>
+									)}
+									<blockquote className="mt-4">
+										<div className="richtext text-sm text-ink/70">
+											<PortableText value={testimonial.content} />
+										</div>
+									</blockquote>
+								</article>
+							</CarouselItem>
+						))}
+					</CarouselContent>
+					<CarouselPrevious />
+					<CarouselNext />
+				</Carousel>
+			</section>
+		</div>
 	)
 }

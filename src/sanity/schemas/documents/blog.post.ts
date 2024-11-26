@@ -19,6 +19,12 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'title',
+			type: 'string',
+			group: 'content',
+			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
 			name: 'body',
 			type: 'array',
 			of: [
@@ -83,7 +89,7 @@ export default defineType({
 	preview: {
 		select: {
 			featured: 'featured',
-			title: 'metadata.title',
+			title: 'title',
 			publishDate: 'publishDate',
 			slug: 'metadata.slug.current',
 			media: 'metadata.image',
@@ -104,7 +110,7 @@ export default defineType({
 		},
 		{
 			title: 'Title',
-			name: 'metadata.title',
+			name: 'title',
 			by: [{ field: 'title', direction: 'asc' }],
 		},
 	],

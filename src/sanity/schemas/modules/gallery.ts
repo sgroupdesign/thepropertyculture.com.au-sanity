@@ -56,12 +56,8 @@ export default defineType({
 			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: [
-					{ title: 'Jade', value: 'primary' },
-					{ title: 'Grey', value: 'gray' },
-					{ title: 'Olive', value: 'secondary' },
-					{ title: 'White', value: 'white' },
-				],
+				list: ['white', 'coffee'],
+				layout: 'radio',
 			},
 			initialValue: 'white',
 			group: 'options',

@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
-import { VscMegaphone, VscCalendar } from 'react-icons/vsc'
 import { getBlockText } from '@/sanity/lib/utils'
+import { VscCalendar, VscMegaphone } from 'react-icons/vsc'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'announcement',
@@ -24,30 +24,16 @@ export default defineType({
 			title: 'Call-to-action',
 			type: 'link',
 		}),
-		defineField({
-			name: 'start',
-			title: 'Start',
-			type: 'datetime',
-			fieldset: 'schedule',
-		}),
-		defineField({
-			name: 'end',
-			title: 'End',
-			type: 'datetime',
-			fieldset: 'schedule',
-		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
 			cta: 'cta.label',
-			start: 'start',
-			end: 'end',
 		},
-		prepare: ({ content, cta, start, end }) => ({
+		prepare: ({ content, cta }) => ({
 			title: getBlockText(content),
 			subtitle: cta,
-			media: (start || end) && VscCalendar,
+			media: VscCalendar,
 		}),
 	},
 })

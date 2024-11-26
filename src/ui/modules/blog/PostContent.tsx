@@ -1,12 +1,9 @@
 import moduleProps from '@/lib/moduleProps'
 import Date from '@/ui/Date'
-import Categories from './Categories'
-import Authors from './Authors'
-import ReadTime from './ReadTime'
-import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import Content from '@/ui/modules/RichtextModule/Content'
-import { cn } from '@/lib/utils'
-import css from './PostContent.module.css'
+import Link from 'next/link'
+import Categories from './Categories'
+import ReadTime from './ReadTime'
 
 export default function PostContent({
 	post,
@@ -14,47 +11,37 @@ export default function PostContent({
 }: { post?: Sanity.BlogPost } & Sanity.Module) {
 	if (!post) return null
 
-	const showTOC = !post.hideTableOfContents || !!post.headings?.length
-
 	return (
-		<article {...moduleProps(props)}>
-			<header className="section space-y-6 text-center">
-				<h1 className="h1 text-balance">{post.metadata.title}</h1>
-				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-					<Date value={post.publishDate} />
+		<article
+			{...moduleProps(props)}
+			className="section flex max-w-screen-lg flex-col gap-y-6 lg:py-20"
+		>
+			<header className="">
+				<div className="mb-2 flex flex-wrap items-center gap-x-6 gap-y-4 font-sans font-medium uppercase text-coffee">
 					<Categories
 						className="flex flex-wrap gap-x-2"
 						categories={post.categories}
-					/>
-					<ReadTime value={post.readTime} />
+					></Categories>
+					{post.readTime && (
+						<div className="flex gap-x-6">
+							<span>|</span>
+							<ReadTime value={post.readTime} />
+						</div>
+					)}
 				</div>
-
-				{post.authors?.length && (
-					<Authors
-						className="flex flex-wrap items-center justify-center gap-4"
-						authors={post.authors}
-					/>
-				)}
+				<h1 className="h1 font-light">{post.title ?? post.metadata.title}</h1>
 			</header>
 
-			<div
-				className={cn(
-					'section grid gap-8',
-					showTOC && 'lg:grid-cols-[1fr,auto]',
-				)}
-			>
-				{showTOC && (
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start [--offset:1rem] lg:order-1 lg:w-[250px]">
-						<TableOfContents headings={post.headings} />
-					</aside>
-				)}
+			<Content value={post.body} className="" />
 
-				<Content
-					value={post.body}
-					className={cn(css.body, 'grid max-w-screen-md')}
-				>
-					<hr />
-				</Content>
+			<div className="italic text-licorice/50">
+				Published on <Date value={post.publishDate} />
+			</div>
+
+			<div>
+				<Link className="btn primary" href="/">
+					Back to articles
+				</Link>
 			</div>
 		</article>
 	)

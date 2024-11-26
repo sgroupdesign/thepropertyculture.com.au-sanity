@@ -1,20 +1,26 @@
-import client from '@/sanity/client'
-import { sanityFetch, groq } from '@/sanity/lib/fetch'
-import { modulesQuery } from '@/sanity/lib/queries'
-import { notFound } from 'next/navigation'
-import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
+import client from '@/sanity/client'
+import { groq, sanityFetch } from '@/sanity/lib/fetch'
+import PostContent from '@/ui/modules/blog/PostContent'
+import PageHeader from '@/ui/PageHeader'
 
 export default async function Page({ params }: Props) {
-	const page = await getPageTemplate()
 	const post = await getPost(await params)
-	if (!page || !post) notFound()
-	return <Modules modules={page?.modules} page={page} post={post} />
+	return (
+		<div>
+			<PageHeader image={post?.pageHeaderImage} />
+			<PostContent
+				post={post}
+				_type={post._type}
+				_key={post._id}
+				enabled={true}
+			/>
+		</div>
+	)
 }
 
 export async function generateMetadata({ params }: Props) {
 	const post = await getPost(await params)
-	if (!post) notFound()
 	return processMetadata(post)
 }
 
@@ -30,6 +36,7 @@ async function getPost(params: { slug?: string }) {
 	const { data } = await sanityFetch({
 		query: groq`*[_type == 'blog.post' && metadata.slug.current == $slug][0]{
 			...,
+			pageHeaderImage,
 			'body': select(_type == 'image' => asset->, body),
 			'readTime': length(string::split(pt::text(body), ' ')) / 200,
 			'headings': body[style in ['h2', 'h3']]{
@@ -47,18 +54,6 @@ async function getPost(params: { slug?: string }) {
 	})
 
 	return data as Sanity.BlogPost
-}
-
-async function getPageTemplate() {
-	const { data } = await sanityFetch({
-		query: groq`*[_type == 'page' && metadata.slug.current == 'blog/*'][0]{
-			...,
-			modules[]{ ${modulesQuery} },
-			metadata { slug }
-		}`,
-	})
-
-	return data as Sanity.Page
 }
 
 type Props = {

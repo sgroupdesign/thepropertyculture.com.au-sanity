@@ -2,7 +2,7 @@ import type { StructureResolver } from 'sanity/structure'
 import { group, singleton } from './lib/utils'
 
 import { BsDatabaseAdd } from 'react-icons/bs'
-import { VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
+import { VscEdit, VscMultipleWindows, VscServerProcess } from 'react-icons/vsc'
 
 export const structure: StructureResolver = (S) =>
 	S.list()
@@ -12,16 +12,20 @@ export const structure: StructureResolver = (S) =>
 			S.divider(),
 
 			S.documentTypeListItem('page').title('Pages').icon(VscMultipleWindows),
-			S.documentTypeListItem('blog.post').title('Blog posts'),
-			S.documentTypeListItem('blog.category').title('Blog categories'),
+			S.documentTypeListItem('person').title('People'),
 			S.divider(),
 
-			S.documentTypeListItem('announcement').title('Announcements'),
+			group(S, 'Blog', [
+				S.documentTypeListItem('blog.post').title('Blog posts'),
+				S.documentTypeListItem('blog.category').title('Blog categories'),
+			]).icon(VscEdit),
+
 			S.documentTypeListItem('navigation'),
 			S.documentTypeListItem('redirect').title('Redirects'),
 			S.divider(),
 
 			group(S, 'Miscellaneous', [
 				S.documentTypeListItem('testimonial').title('Testimonials'),
+				S.documentTypeListItem('announcement').title('Announcements'),
 			]).icon(BsDatabaseAdd),
 		])

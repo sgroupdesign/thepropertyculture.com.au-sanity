@@ -15,7 +15,7 @@ export default defineType({
 			name: 'style',
 			type: 'string',
 			options: {
-				list: ['primary', 'link'],
+				list: ['btn', 'link'],
 			},
 		}),
 	],

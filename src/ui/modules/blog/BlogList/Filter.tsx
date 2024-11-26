@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import { categoryStore } from '../store'
-import Category from '../Category'
 import { cn } from '@/lib/utils'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import Category from '../Category'
+import { categoryStore } from '../store'
 import css from './FilterList.module.css'
 
 export default function Filter({
@@ -22,10 +22,10 @@ export default function Filter({
 		<button
 			className={cn(
 				css.filter,
-				'!py-1',
+				'border-b border-coffee',
 				selected === value
-					? 'action *:text-white/50'
-					: 'ghost border border-transparent',
+					? 'border-terracotta text-terracotta'
+					: 'border-coffee text-coffee',
 			)}
 			onClick={() => setSelected(value)}
 		>

@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
-import { VscEdit } from 'react-icons/vsc'
 import { getBlockText } from '@/sanity/lib/utils'
+import { VscEdit } from 'react-icons/vsc'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'blog-list',
@@ -59,6 +59,12 @@ export default defineType({
 			type: 'reference',
 			to: [{ type: 'blog.category' }],
 			group: 'filtering',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
 		}),
 	],
 	preview: {

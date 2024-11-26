@@ -26,8 +26,6 @@ declare global {
 		type Announcement = SanityDocument<{
 			content: any
 			cta?: Link
-			start?: string
-			end?: string
 		}>
 
 		// pages
@@ -35,6 +33,7 @@ declare global {
 		type PageBase = SanityDocument<{
 			title?: string
 			metadata: Metadata
+			pageHeaderImage?: Image
 		}>
 
 		type Page = PageBase & {
@@ -70,20 +69,14 @@ declare global {
 		}>
 
 		type Person = SanityDocument<{
+			readonly _type: 'Person'
 			name: string
 			image?: Image
-		}>
-
-		type Pricing = SanityDocument<{
-			title: string
-			highlight?: string
-			price: {
-				base?: number
-				strikethrough?: number
-				suffix?: string
-			}
-			ctas?: CTA[]
-			content?: any
+			jobTitle?: string
+			body: any
+			pageHeaderImage?: Image
+			social?: Navigation
+			metadata: Metadata
 		}>
 
 		type Reputation = SanityDocument<{
@@ -98,7 +91,7 @@ declare global {
 			content: any
 			author?: {
 				name: string
-				title?: string
+				location?: string
 				image?: Image
 			}
 		}>
@@ -146,6 +139,7 @@ declare global {
 			_type: T
 			_key: string
 			uid?: string
+			enabled: boolean
 		}
 	}
 }

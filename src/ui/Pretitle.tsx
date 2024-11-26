@@ -8,7 +8,12 @@ export default function Pretitle({
 	if (!children) return null
 
 	return (
-		<p className={cn('text-terracotta text-sm uppercase', className)}>
+		<p
+			className={cn(
+				'font-sans font-semibold uppercase tracking-widest text-terracotta',
+				className,
+			)}
+		>
 			{stegaClean(children)}
 		</p>
 	)

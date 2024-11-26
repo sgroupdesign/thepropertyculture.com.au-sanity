@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
-import { GrBlockQuote } from 'react-icons/gr'
 import { count, getBlockText } from '@/sanity/lib/utils'
+import { GrBlockQuote } from 'react-icons/gr'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'testimonial-list',
@@ -22,14 +22,28 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'layout',
+			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['grid', 'carousel'],
+				list: ['white', 'coffee'],
 				layout: 'radio',
 			},
+			initialValue: 'white',
 			group: 'options',
-			initialValue: 'carousel',
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
+			group: 'options',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
 		}),
 	],
 	preview: {

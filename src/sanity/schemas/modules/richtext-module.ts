@@ -1,7 +1,7 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { VscSymbolKeyword } from 'react-icons/vsc'
-import imageBlock from '../fragments/image-block'
 import { getBlockText } from '@/sanity/lib/utils'
+import { VscSymbolKeyword } from 'react-icons/vsc'
+import { defineField, defineType } from 'sanity'
+import imageBlock from '../fragments/image-block'
 
 export default defineType({
 	name: 'richtext-module',
@@ -14,49 +14,40 @@ export default defineType({
 	],
 	fields: [
 		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
-			group: 'options',
-		}),
-		defineField({
 			name: 'content',
 			type: 'array',
-			of: [
-				{ type: 'block' },
-				imageBlock,
-				defineArrayMember({
-					type: 'code',
-					options: {
-						withFilename: true,
-					},
-				}),
-				{ type: 'custom-html' },
-			],
+			of: [{ type: 'block' }, imageBlock],
 			group: 'content',
 		}),
 		defineField({
-			name: 'tableOfContents',
-			type: 'boolean',
-			initialValue: false,
-			group: 'options',
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+			group: 'content',
 		}),
 		defineField({
-			name: 'tocPosition',
+			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['left', 'right'],
+				list: ['white', 'coffee'],
 				layout: 'radio',
 			},
-			hidden: ({ parent }) => !parent.tableOfContents,
-			initialValue: 'right',
+			initialValue: 'white',
 			group: 'options',
 		}),
 		defineField({
-			name: 'stretch',
+			name: 'centerAligned',
 			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
 			initialValue: false,
-			hidden: ({ parent }) => parent.tableOfContents,
+			group: 'options',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
 			group: 'options',
 		}),
 	],

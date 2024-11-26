@@ -1,6 +1,6 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
-import { VscQuestion } from 'react-icons/vsc'
 import { getBlockText } from '@/sanity/lib/utils'
+import { VscQuestion } from 'react-icons/vsc'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'accordion-list',
@@ -53,6 +53,13 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'ctas',
+			title: 'Call-to-actions',
+			type: 'array',
+			of: [{ type: 'cta' }],
+			group: 'content',
+		}),
+		defineField({
 			name: 'layout',
 			type: 'string',
 			options: {
@@ -63,9 +70,27 @@ export default defineType({
 			group: 'options',
 		}),
 		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
+			name: 'backgroundColour',
+			type: 'string',
+			options: {
+				list: ['white', 'coffee'],
+				layout: 'radio',
+			},
+			initialValue: 'white',
+			group: 'options',
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
+			group: 'options',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
 			group: 'options',
 		}),
 	],

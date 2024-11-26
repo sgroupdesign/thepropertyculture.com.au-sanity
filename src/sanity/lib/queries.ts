@@ -49,7 +49,6 @@ export const modulesQuery = groq`
 		link{ ${linkQuery} }
 	},
 	_type == 'blog-list' => { filteredCategory-> },
-	_type == 'breadcrumbs' => { crumbs[]{ ${linkQuery} } },
 	_type == 'card-list' => {
 		cards[]{
 			...,
@@ -71,19 +70,12 @@ export const modulesQuery = groq`
 			${reputationBlockQuery}
 		}
 	},
-	_type == 'hero.saas' => {
-		content[]{
-			...,
-			${reputationBlockQuery}
-		}
-	},
 	_type == 'hero.split' => {
 		content[]{
 			...,
 			${reputationBlockQuery}
 		}
 	},
-	_type == 'logo-list' => { logos[]-> },
 	_type == 'pricing-list' => {
 		tiers[]->{
 			...,

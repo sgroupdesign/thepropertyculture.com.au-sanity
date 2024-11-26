@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField } from 'sanity'
 import { IoIosImage } from 'react-icons/io'
+import { defineArrayMember, defineField } from 'sanity'
 
 export default defineArrayMember({
 	type: 'image',
@@ -21,11 +21,6 @@ export default defineArrayMember({
 		defineField({
 			name: 'alt',
 			type: 'string',
-			fieldset: 'info',
-		}),
-		defineField({
-			name: 'source',
-			type: 'url',
 			fieldset: 'info',
 		}),
 		defineField({

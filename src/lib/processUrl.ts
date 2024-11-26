@@ -10,7 +10,10 @@ export default function (
 		params?: string
 	} = {},
 ) {
-	const segment = page._type === 'blog.post' ? 'blog' : null
+	const segment =
+		((page._type === 'blog.post' && 'blog') ||
+			(page._type === 'person' && 'team')) ??
+		null
 
 	const slug = page.metadata?.slug?.current
 	const path = slug === 'index' ? null : slug

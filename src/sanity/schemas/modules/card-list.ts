@@ -10,12 +10,6 @@ export default defineType({
 	groups: [{ name: 'content', default: true }, { name: 'options' }],
 	fields: [
 		defineField({
-			name: 'uid',
-			title: 'Unique Identifier',
-			type: 'uid',
-			group: 'options',
-		}),
-		defineField({
 			name: 'pretitle',
 			type: 'string',
 			group: 'content',
@@ -62,14 +56,28 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
-			name: 'layout',
+			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['grid', 'carousel'],
+				list: ['white', 'coffee'],
 				layout: 'radio',
 			},
+			initialValue: 'white',
 			group: 'options',
-			initialValue: 'carousel',
+		}),
+		defineField({
+			name: 'centerAligned',
+			type: 'boolean',
+			description:
+				'By default the content field is left aligned, enable this for center alignment if required.',
+			initialValue: false,
+			group: 'options',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
 		}),
 	],
 	preview: {

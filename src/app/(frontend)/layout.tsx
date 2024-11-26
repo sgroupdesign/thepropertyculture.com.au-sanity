@@ -2,11 +2,38 @@ import '@/styles/app.css'
 import Announcement from '@/ui/Announcement'
 import Footer from '@/ui/footer'
 import Header from '@/ui/header'
-import Logo from '@/ui/Logo'
 import SkipToContent from '@/ui/SkipToContent'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import localFont from 'next/font/local'
+
+const FoundersGrotesk = localFont({
+	src: [
+		{
+			path: '../FoundersGroteskTest-Regular.otf',
+			weight: '400',
+			style: 'normal',
+		},
+		{
+			path: '../FoundersGroteskTest-RegularItalic.otf',
+			weight: '400',
+			style: 'italic',
+		},
+		{
+			path: '../FoundersGroteskTest-Medium.otf',
+			weight: '500',
+			style: 'normal',
+		},
+		{
+			path: '../FoundersGroteskTest-MediumItalic.otf',
+			weight: '500',
+			style: 'italic',
+		},
+	],
+	display: 'swap',
+	variable: '--font-founders-grotesk',
+})
 
 export default async function RootLayout({
 	children,
@@ -14,7 +41,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className={`${FoundersGrotesk.variable}`}>
 			<head>
 				<link
 					rel="stylesheet"
@@ -22,19 +49,18 @@ export default async function RootLayout({
 				></link>
 			</head>
 
-			<body className="text-licorice bg-canvas">
+			<body className="bg-canvas text-licorice">
 				<SkipToContent />
 				<Announcement />
 				<div className="relative">
-					<Logo />
-					<div className="pl-16 lg:pl-40">
-						<Header />
-						<main id="main-content" tabIndex={-1}>
-							{children}
-						</main>
-					</div>
+					<Header />
+					<main id="main-content" tabIndex={-1} className="pl-14 md:pl-0">
+						{children}
+					</main>
 				</div>
-				<Footer />
+				<div className="pl-14 md:pl-0">
+					<Footer />
+				</div>
 				<VisualEditingControls />
 				<Analytics />
 				<SpeedInsights />

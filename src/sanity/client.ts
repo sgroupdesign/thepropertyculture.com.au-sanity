@@ -1,6 +1,6 @@
-import { createClient } from 'next-sanity'
-import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
 import { dev } from '@/lib/env'
+import { apiVersion, dataset, projectId } from '@/sanity/lib/env'
+import { createClient } from 'next-sanity'
 
 export default createClient({
 	projectId,
@@ -8,6 +8,6 @@ export default createClient({
 	apiVersion,
 	useCdn: !dev,
 	stega: {
-		studioUrl: '/admin',
+		studioUrl: '/studio',
 	},
 })

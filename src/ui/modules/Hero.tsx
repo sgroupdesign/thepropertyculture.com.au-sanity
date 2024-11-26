@@ -1,26 +1,27 @@
-import Img, { Source } from '@/ui/Img'
-import { PortableText, stegaClean } from 'next-sanity'
-import CTAList from '@/ui/CTAList'
-import Pretitle from '@/ui/Pretitle'
-import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
+import CTAList from '@/ui/CTAList'
+import Img, { Source } from '@/ui/Img'
+import Pretitle from '@/ui/Pretitle'
+import { PortableText, stegaClean } from 'next-sanity'
 
 export default function Hero({
 	pretitle,
 	content,
 	ctas,
 	bgImage,
-	bgImageMobile,
+	overlayOpacity,
 	textAlign = 'center',
 	alignItems,
+	darkMode,
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
 	bgImage: Sanity.Image
-	bgImageMobile: Sanity.Image
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
+	darkMode: boolean
+	overlayOpacity: string
 }>) {
 	const hasImage = !!bgImage?.asset
 
@@ -28,12 +29,12 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-					'grid overflow-hidden bg-ink text-canvas *:col-span-full *:row-span-full',
+					'relative grid overflow-hidden text-canvas *:col-span-full *:row-span-full',
 			)}
 		>
 			{hasImage && (
 				<picture>
-					<Source image={bgImageMobile} imageWidth={1200} />
+					<Source image={bgImage} imageWidth={1200} />
 					<Img
 						className="size-full max-h-fold object-cover"
 						image={bgImage}
@@ -43,12 +44,24 @@ export default function Hero({
 				</picture>
 			)}
 
+			{!overlayOpacity && (
+				<div
+					className={cn('absolute inset-0 bg-black/40', {
+						overlayOpacity,
+						'bg-transparent': stegaClean(overlayOpacity) === '0',
+						'bg-black/20': stegaClean(overlayOpacity) === '20',
+						'bg-black/40': stegaClean(overlayOpacity) === '40',
+						'bg-black/60': stegaClean(overlayOpacity) === '60',
+						'bg-black/80': stegaClean(overlayOpacity) === '80',
+					})}
+				></div>
+			)}
+
 			{content && (
 				<div className="section flex w-full flex-col">
 					<div
 						className={cn(
-							'richtext relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
-							hasImage && 'text-shadow',
+							'relative isolate max-w-xl [&_:is(h1,h2)]:text-balance',
 							{
 								'mb-8': stegaClean(alignItems) === 'start',
 								'my-auto': stegaClean(alignItems) === 'center',
@@ -62,31 +75,18 @@ export default function Hero({
 						)}
 						style={{ textAlign: stegaClean(textAlign) }}
 					>
-						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
+						<Pretitle className={cn(darkMode && 'text-white')}>
 							{pretitle}
 						</Pretitle>
 
-						<PortableText
-							value={content}
-							components={{
-								types: {
-									'reputation-block': ({ value }) => (
-										<Reputation
-											className={cn(
-												'!mt-4',
-												hasImage && '[&_strong]:text-amber-400',
-												{
-													'justify-start': stegaClean(textAlign) === 'left',
-													'justify-center': stegaClean(textAlign) === 'center',
-													'justify-end': stegaClean(textAlign) === 'right',
-												},
-											)}
-											reputation={value.reputation}
-										/>
-									),
-								},
-							}}
-						/>
+						<div
+							className={cn(
+								'richtext',
+								darkMode ? 'text-white' : 'text-licorice',
+							)}
+						>
+							<PortableText value={content} />
+						</div>
 
 						<CTAList
 							ctas={ctas}

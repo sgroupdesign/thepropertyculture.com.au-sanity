@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity'
 import { VscCode } from 'react-icons/vsc'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'custom-html',
@@ -28,6 +28,12 @@ export default defineType({
 				languageAlternatives: [{ title: 'HTML', value: 'html' }],
 			},
 			group: 'content',
+		}),
+		defineField({
+			name: 'enabled',
+			type: 'boolean',
+			initialValue: true,
+			group: 'options',
 		}),
 	],
 	preview: {

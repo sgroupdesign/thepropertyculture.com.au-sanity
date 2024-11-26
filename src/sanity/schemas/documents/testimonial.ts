@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
-import { GrBlockQuote } from 'react-icons/gr'
 import { getBlockText } from '@/sanity/lib/utils'
+import { GrBlockQuote } from 'react-icons/gr'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
 	name: 'testimonial',
@@ -22,7 +22,7 @@ export default defineType({
 					type: 'string',
 				}),
 				defineField({
-					name: 'title',
+					name: 'location',
 					type: 'string',
 				}),
 				defineField({
@@ -41,7 +41,7 @@ export default defineType({
 			author: 'author',
 		},
 		prepare: ({ content, author }) => ({
-			title: author?.name || author?.title || 'No author',
+			title: author?.name || 'No author',
 			subtitle: getBlockText(content),
 			media: author?.image,
 		}),
