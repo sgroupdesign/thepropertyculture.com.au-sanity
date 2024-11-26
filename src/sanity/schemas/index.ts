@@ -15,7 +15,6 @@ import cta from './objects/cta'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import metadata from './objects/metadata'
-import uid from './objects/uid'
 
 // modules
 import accordionList from './modules/accordion-list'
@@ -45,7 +44,6 @@ export const schemaTypes = [
 
 	// objects
 	cta,
-	uid,
 	link,
 	linkList,
 	metadata,
