@@ -57,9 +57,12 @@ export default function CardList({
 							<h4 className="font-sans text-2xl font-light uppercase tracking-widest">
 								{card.title}
 							</h4>
-							<figure className="flex flex-nowrap space-x-6" key={key}>
+							<figure className="flex flex-nowrap space-x-6">
 								{card.images?.map((image, key) => (
-									<div className="relative aspect-video min-h-52 shrink-0 basis-2/3">
+									<div
+										className="relative aspect-video min-h-52 shrink-0 basis-2/3"
+										key={key}
+									>
 										<Img
 											className="absolute inset-0 h-full w-full object-cover object-center"
 											image={image}
