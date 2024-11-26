@@ -43,11 +43,8 @@ export default function TestimonialList({
 				<Carousel>
 					<CarouselContent>
 						{testimonials?.map(({ author, ...testimonial }, key) => (
-							<CarouselItem className="md:basis-1/2 lg:basis-1/3">
-								<article
-									className="border-2 border-coffee/40 bg-white p-6 shadow-sm"
-									key={key}
-								>
+							<CarouselItem className="md:basis-1/2 lg:basis-1/3" key={key}>
+								<article className="border-2 border-coffee/40 bg-white p-6 shadow-sm">
 									{author && (
 										<header>
 											<div className="flex items-center gap-4">

@@ -46,7 +46,7 @@ export default function Hero({
 
 			{!overlayOpacity && (
 				<div
-					className={cn('absolute inset-0 bg-black/40', {
+					className={cn('absolute inset-0', {
 						overlayOpacity,
 						'bg-transparent': stegaClean(overlayOpacity) === '0',
 						'bg-black/20': stegaClean(overlayOpacity) === '20',
