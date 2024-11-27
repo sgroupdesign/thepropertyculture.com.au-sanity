@@ -39,7 +39,7 @@ export default function PostContent({
 			</div>
 
 			<div>
-				<Link className="btn primary" href="/">
+				<Link className="btn primary" href="/blog">
 					Back to articles
 				</Link>
 			</div>

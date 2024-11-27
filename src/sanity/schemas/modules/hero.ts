@@ -58,20 +58,6 @@ export default defineType({
 					},
 					initialValue: 'lazy',
 				}),
-				defineField({
-					name: 'overlayOpacity',
-					type: 'string',
-					options: {
-						list: [
-							{ title: '0%', value: '0' },
-							{ title: '20%', value: '20' },
-							{ title: '40%', value: '40' },
-							{ title: '60%', value: '60' },
-							{ title: '80%', value: '80' },
-							{ title: '100%', value: '100' },
-						],
-					},
-				}),
 			],
 			group: 'image',
 			fieldset: 'image',
@@ -79,6 +65,21 @@ export default defineType({
 		defineField({
 			name: 'darkMode',
 			type: 'boolean',
+			group: 'options',
+		}),
+		defineField({
+			name: 'overlayOpacity',
+			type: 'string',
+			options: {
+				list: [
+					{ title: '0%', value: '0' },
+					{ title: '20%', value: '20' },
+					{ title: '40%', value: '40' },
+					{ title: '60%', value: '60' },
+					{ title: '80%', value: '80' },
+					{ title: '100%', value: '100' },
+				],
+			},
 			group: 'options',
 		}),
 		defineField({

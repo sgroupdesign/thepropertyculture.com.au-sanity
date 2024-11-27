@@ -44,7 +44,9 @@ export default function Hero({
 				</picture>
 			)}
 
-			{!overlayOpacity && (
+			{JSON.stringify(overlayOpacity)}
+
+			{overlayOpacity && (
 				<div
 					className={cn('absolute inset-0', {
 						overlayOpacity,
