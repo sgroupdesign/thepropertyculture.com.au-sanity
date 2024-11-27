@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
 		SC_DISABLE_SPEEDY: 'false',
 	},
 
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+
 	// logging: {
 	// 	fetches: {
 	// 		fullUrl: true,

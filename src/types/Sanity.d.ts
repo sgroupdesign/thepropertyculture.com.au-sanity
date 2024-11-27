@@ -49,7 +49,6 @@ declare global {
 			categories: BlogCategory[]
 			authors: Person[]
 			featured: boolean
-			hideTableOfContents: boolean
 			publishDate: string
 		}
 
