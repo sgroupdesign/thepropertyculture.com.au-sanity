@@ -32,7 +32,7 @@ export default async function Header() {
 				)}
 			>
 				<div></div>
-				<div className="fixed inset-0 right-auto bg-white p-3 lg:bg-transparent lg:p-12">
+				<div className="fixed inset-0 right-auto z-10 bg-white p-3 lg:bg-transparent lg:p-12">
 					<div className="lg:hidden">
 						<Sheet>
 							<SheetTrigger>
