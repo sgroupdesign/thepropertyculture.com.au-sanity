@@ -65,7 +65,7 @@ export default async function Header() {
 											switch (item._type) {
 												case 'link':
 													return (
-														<SheetClose asChild>
+														<SheetClose asChild key={key}>
 															<CTA
 																className="block border-b border-terracotta/50 py-2 text-xl"
 																link={item}
@@ -76,7 +76,7 @@ export default async function Header() {
 
 												case 'link.list':
 													return (
-														<SheetClose asChild>
+														<SheetClose asChild key={key}>
 															<LinkList {...item} key={key} />
 														</SheetClose>
 													)

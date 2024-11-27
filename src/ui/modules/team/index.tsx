@@ -15,6 +15,8 @@ export default async function TeamList({
 			name,
 			jobTitle,
 			image,
+			metadata,
+			_type,
 	}`,
 	})
 
