@@ -79,7 +79,7 @@ export default defineType({
 			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['white', 'coffee'],
+				list: ['white', 'lightBlue'],
 				layout: 'radio',
 			},
 			initialValue: 'white',

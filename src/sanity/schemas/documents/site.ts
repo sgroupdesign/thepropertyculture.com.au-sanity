@@ -16,6 +16,12 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
+			name: 'companyText',
+			type: 'text',
+			rows: 4,
+			group: 'general',
+		}),
+		defineField({
 			name: 'logo',
 			type: 'logo',
 			options: {

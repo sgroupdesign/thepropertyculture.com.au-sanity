@@ -8,10 +8,10 @@ export default async function Header() {
 	const logoImage = logo?.image?.dark || logo?.image?.default
 
 	return (
-		<Link href="/" className="">
+		<Link href="/" className="absolute left-6 top-6 rounded-b-lg bg-white p-6">
 			{logoImage ? (
 				<Img
-					className="w-8 lg:w-10"
+					className="w-52"
 					image={logoImage}
 					alt={logo?.name || companyName}
 				/>

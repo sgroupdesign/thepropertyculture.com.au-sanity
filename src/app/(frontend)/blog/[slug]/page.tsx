@@ -8,7 +8,7 @@ export default async function Page({ params }: Props) {
 	const post = await getPost(await params)
 	return (
 		<div>
-			<PageHeader image={post?.pageHeaderImage} />
+			<PageHeader image={post?.pageHeaderImage} hero={false} />
 			<PostContent
 				post={post}
 				_type={post._type}

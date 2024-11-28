@@ -22,7 +22,7 @@ export default async function Page({ params }: Props) {
 
 	return (
 		<div>
-			<PageHeader image={member?.pageHeaderImage} />
+			<PageHeader image={member?.pageHeaderImage} hero={false} />
 			<div className="section grid items-center gap-8 md:grid-cols-3 md:gap-x-12">
 				<figure className="max-md:full-bleed md:order-1">
 					<Img image={member.image} imageWidth={600} />

@@ -11,7 +11,9 @@ export default function CTAList({
 
 	return (
 		<div className={cn('flex flex-wrap items-center gap-4', className)}>
-			{ctas?.map((cta, key) => <CTA className="" {...cta} key={key} />)}
+			{ctas?.map((cta, key) => (
+				<CTA className={cn(key === 1 && 'secondary')} {...cta} key={key} />
+			))}
 		</div>
 	)
 }

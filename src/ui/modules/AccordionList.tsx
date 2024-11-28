@@ -65,14 +65,17 @@ export default function AccordionList({
 				<div className="mx-auto w-full max-w-screen-md">
 					{items?.map(({ summary, content, open }, key) => (
 						<details
-							className="accordion border-b border-coffee"
+							className="accordion border-lightBlue border-b"
 							open={open}
 							itemScope
 							itemProp="mainEntity"
 							itemType="https://schema.org/Question"
 							key={key}
 						>
-							<summary className="py-4" itemProp="name">
+							<summary
+								className="text-heroBlue py-4 text-xl font-semibold"
+								itemProp="name"
+							>
 								{summary}
 							</summary>
 

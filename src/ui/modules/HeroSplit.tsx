@@ -25,8 +25,9 @@ export default function HeroSplit({
 	return (
 		<section
 			className={cn(
-				stegaClean(backgroundColour) === 'coffee'
-					? 'bg-coffee/20 py-10'
+				'relative overflow-hidden',
+				stegaClean(backgroundColour) === 'lightBlue'
+					? 'bg-lightBlue py-10'
 					: 'bg-white py-10',
 			)}
 		>
@@ -42,7 +43,7 @@ export default function HeroSplit({
 				<figure
 					className={cn('max-md:full-bleed', image?.onRight && 'md:order-1')}
 				>
-					<Img image={image} imageWidth={1200} />
+					<Img image={image} imageWidth={1200} className="rounded-lg" />
 				</figure>
 
 				<div

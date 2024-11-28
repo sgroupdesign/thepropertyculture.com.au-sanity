@@ -5,6 +5,7 @@ import PostContent from './blog/PostContent'
 import CardList from './CardList'
 import CreativeModule from './CreativeModule'
 import CustomHTML from './CustomHTML'
+import Gallery from './Gallery'
 import Hero from './Hero'
 import HeroSplit from './HeroSplit'
 import RichtextModule from './RichtextModule'
@@ -41,6 +42,8 @@ export default function Modules({
 							return <CreativeModule {...module} key={module._key} />
 						case 'custom-html':
 							return <CustomHTML {...module} key={module._key} />
+						case 'gallery':
+							return <Gallery {...module} key={module._key} />
 						case 'hero':
 							return <Hero {...module} key={module._key} />
 						case 'hero.split':

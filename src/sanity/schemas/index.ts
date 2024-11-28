@@ -21,6 +21,7 @@ import accordionList from './modules/accordion-list'
 import blogList from './modules/blog-list'
 import cardList from './modules/card-list'
 import customHtml from './modules/custom-html'
+import gallery from './modules/gallery'
 import hero from './modules/hero'
 import heroSplit from './modules/hero.split'
 import richtextModule from './modules/richtext-module'
@@ -53,6 +54,7 @@ export const schemaTypes = [
 	blogList,
 	cardList,
 	customHtml,
+	gallery,
 	hero,
 	heroSplit,
 	richtextModule,

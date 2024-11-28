@@ -11,7 +11,7 @@ export default async function Page({ params }: Props) {
 	if (!page) notFound()
 	return (
 		<div className="">
-			<PageHeader image={page?.pageHeaderImage} />
+			<PageHeader image={page?.pageHeaderImage} hero={false} />
 			<Modules modules={page?.modules} page={page} />
 		</div>
 	)

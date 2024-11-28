@@ -44,11 +44,11 @@ export default function TestimonialList({
 					<CarouselContent>
 						{testimonials?.map(({ author, ...testimonial }, key) => (
 							<CarouselItem className="md:basis-1/2 lg:basis-1/3" key={key}>
-								<article className="border-2 border-coffee/40 bg-white p-6 shadow-sm">
+								<article className="border-heroBlue/20 h-full rounded-lg border bg-white p-6 shadow-sm">
 									{author && (
 										<header>
 											<div className="flex items-center gap-4">
-												<div className="relative flex size-[50px] items-center justify-center overflow-hidden rounded-full text-white">
+												<div className="bg-lightBlue text-heroBlue relative flex size-[50px] items-center justify-center overflow-hidden rounded-full font-semibold">
 													{author?.image ? (
 														<Img
 															className="size-[50px] rounded-full object-cover"
@@ -64,18 +64,18 @@ export default function TestimonialList({
 													)}
 												</div>
 												<div className={cn(author?.image && 'text-left')}>
-													<p className="text-base font-semibold">
-														{author?.name}
-													</p>
+													<p className="m-0 font-semibold">{author?.name}</p>
 													{author?.name && (
-														<div className="text-sm">{author?.name}</div>
+														<div className="text-base italic">
+															{author?.location}
+														</div>
 													)}
 												</div>
 											</div>
 										</header>
 									)}
 									<blockquote className="mt-4">
-										<div className="richtext text-sm text-ink/70">
+										<div className="richtext text-base text-ink/70">
 											<PortableText value={testimonial.content} />
 										</div>
 									</blockquote>

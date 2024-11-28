@@ -1,10 +1,8 @@
 body {
-	font-family: 'fagun', sans-serif;
-	font-weight: 300;
+	font-family: 'texta', sans-serif;
+	font-weight: 400;
 	font-style: normal;
-	font-size: 16px;
-	letter-spacing: 0.5px;
-	line-height: 32px;
+	font-size: 1.2rem;
 }
 
 @tailwind base;
@@ -108,15 +106,15 @@ body {
 	/* typography */
 
 	._h {
-		@apply font-light;
+		@apply mb-4 font-semibold;
 	}
 
 	.h1 {
-		@apply _h text-5xl;
+		@apply _h text-6xl;
 	}
 
 	.h2 {
-		@apply _h text-4xl;
+		@apply _h text-5xl;
 	}
 
 	.h3 {
@@ -152,11 +150,14 @@ body {
 	/* ctas, links */
 
 	.btn {
-		@apply inline-block border border-terracotta bg-white px-6 pb-3.5 pt-5 align-middle font-sans font-semibold uppercase leading-none tracking-widest text-terracotta transition ease-in-out hover:bg-coffee;
+		@apply bg-midBlue hover:bg-midBlue/80 border-midBlue/80 rounded-lg border px-5 py-2.5 text-center text-lg font-semibold text-white transition ease-in-out;
+		&.secondary {
+			@apply text-midBlue hover:bg-midBlue bg-white hover:text-white;
+		}
 	}
 
 	.link {
-		@apply border-b border-coffee text-coffee transition ease-in-out;
+		@apply border-midBlue text-midBlue border-b transition ease-in-out;
 
 		&:hover {
 			@apply border-none;
@@ -177,10 +178,10 @@ body {
 	/* richtext */
 
 	.richtext {
-		@apply space-y-2 leading-loose;
+		@apply space-y-2;
 
 		& :is(h1, h2, h3, h4, h5, h6) strong {
-			@apply font-light text-licorice;
+			@apply text-heroBlue mb-4 font-semibold;
 		}
 
 		& h1 {
@@ -188,23 +189,23 @@ body {
 		}
 
 		& h2 {
-			@apply h2 text-licorice;
+			@apply h2 text-heroBlue;
 		}
 
 		& h3 {
-			@apply h3 text-licorice;
+			@apply h3 text-heroBlue;
 		}
 
 		& h4 {
-			@apply h4 text-licorice;
+			@apply h4 text-heroBlue;
 		}
 
 		& h5 {
-			@apply h5 text-licorice;
+			@apply h5 text-heroBlue;
 		}
 
 		& h6 {
-			@apply h6 text-licorice;
+			@apply h6 text-heroBlue;
 		}
 
 		&.text-white {
@@ -277,9 +278,10 @@ body {
 			&::after {
 				content: '+';
 				display: inline-block;
-				font-family: monospace;
 				font-size: 1.5em;
 				transition: rotate 0.2s;
+				font-weight: 100;
+				color: rgb(60 97 112 / var(--tw-text-opacity));
 			}
 		}
 

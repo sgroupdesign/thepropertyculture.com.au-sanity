@@ -4,10 +4,10 @@ import CTA from './CTA'
 
 import {
 	FaEnvelope,
-	FaFacebookF,
+	FaFacebook,
 	FaGithub,
 	FaInstagram,
-	FaLinkedinIn,
+	FaLinkedin,
 	FaTiktok,
 	FaXTwitter,
 	FaYoutube,
@@ -28,11 +28,15 @@ export default async function Social({
 					case 'link':
 						return (
 							<CTA
-								className="px-2 py-1 hover:!opacity-100 group-has-[a:hover]:opacity-50"
+								className="p-1.5 hover:!opacity-100 group-has-[a:hover]:opacity-50"
 								link={item}
 								key={key}
 							>
-								<Icon url={item.external} aria-label={item.label} />
+								<Icon
+									url={item.external}
+									aria-label={item.label}
+									fontSize={'1.5rem'}
+								/>
 							</CTA>
 						)
 
@@ -51,13 +55,13 @@ function Icon({
 	if (!url) return null
 
 	return url?.includes('facebook.com') ? (
-		<FaFacebookF {...props} />
+		<FaFacebook {...props} />
 	) : url?.includes('github.com') ? (
 		<FaGithub {...props} />
 	) : url?.includes('instagram.com') ? (
 		<FaInstagram {...props} />
 	) : url?.includes('linkedin.com') ? (
-		<FaLinkedinIn {...props} />
+		<FaLinkedin {...props} />
 	) : url?.includes('tiktok.com') ? (
 		<FaTiktok {...props} />
 	) : url?.includes('twitter.com') || url?.includes('x.com') ? (

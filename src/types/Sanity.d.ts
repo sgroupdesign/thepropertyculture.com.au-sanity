@@ -7,6 +7,7 @@ declare global {
 
 		type Site = SanityDocument<{
 			companyName: string
+			companyText: string
 			logo?: Logo
 			announcements?: Announcement[]
 			ctas?: CTA[]

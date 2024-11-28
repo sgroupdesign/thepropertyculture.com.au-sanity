@@ -44,8 +44,6 @@ export default function Hero({
 				</picture>
 			)}
 
-			{JSON.stringify(overlayOpacity)}
-
 			{overlayOpacity && (
 				<div
 					className={cn('absolute inset-0', {
@@ -92,7 +90,7 @@ export default function Hero({
 
 						<CTAList
 							ctas={ctas}
-							className={cn('!mt-4', {
+							className={cn('mt-6', {
 								'justify-start': stegaClean(textAlign) === 'left',
 								'justify-center': stegaClean(textAlign) === 'center',
 								'justify-end': stegaClean(textAlign) === 'right',

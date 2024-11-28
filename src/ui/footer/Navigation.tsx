@@ -13,7 +13,7 @@ export default async function Menu() {
 					case 'link':
 						return (
 							<CTA
-								className="font-semibold uppercase tracking-widest text-coffee hover:underline"
+								className="font-semibold uppercase text-white hover:underline"
 								link={item}
 								key={key}
 							/>
@@ -22,8 +22,8 @@ export default async function Menu() {
 					case 'link.list':
 						return (
 							<div className="space-y-2 text-left" key={key}>
-								<div className="font-semibold uppercase tracking-widest text-coffee hover:underline">
-									<CTA link={item.link} className="text-coffee">
+								<div className="font-semibold uppercase text-white hover:underline">
+									<CTA link={item.link} className="text-white">
 										{stegaClean(item.link?.label) || item.link.internal?.title}
 									</CTA>
 								</div>
@@ -33,7 +33,7 @@ export default async function Menu() {
 										<li key={key}>
 											<CTA
 												className={cn(
-													'inline-block py-px font-light text-coffee hover:underline',
+													'inline-block py-px font-light text-white hover:underline',
 													link.external?.startsWith('http') && 'is-external',
 												)}
 												link={link}

@@ -33,6 +33,7 @@ export default defineType({
 				{ type: 'blog-list' },
 				{ type: 'card-list' },
 				{ type: 'custom-html' },
+				{ type: 'gallery' },
 				{ type: 'hero' },
 				{ type: 'hero.split' },
 				{ type: 'richtext-module' },

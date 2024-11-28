@@ -56,36 +56,19 @@ export default defineType({
 			name: 'backgroundColour',
 			type: 'string',
 			options: {
-				list: ['white', 'coffee'],
+				list: ['white', 'lightBlue'],
 				layout: 'radio',
 			},
 			initialValue: 'white',
 			group: 'options',
 		}),
 		defineField({
-			name: 'containerFullWidth',
-			type: 'boolean',
-			description: 'Use the full container width by enabling this field.',
-			initialValue: false,
-			group: 'options',
-		}),
-		defineField({
-			name: 'aspectRatio',
+			name: 'layout',
 			type: 'string',
 			options: {
-				list: [
-					{ title: '3x4', value: '3/4' },
-					{ title: '4x3', value: '4/3' },
-					{ title: '16x9', value: 'video' },
-				],
+				list: ['grid', 'carousel'],
 			},
 			initialValue: '3/4',
-			group: 'options',
-		}),
-		defineField({
-			name: 'columns',
-			type: 'number',
-			initialValue: 3,
 			group: 'options',
 		}),
 		defineField({

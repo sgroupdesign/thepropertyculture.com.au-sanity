@@ -7,32 +7,23 @@ import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 
-const FoundersGrotesk = localFont({
+const Texta = localFont({
 	src: [
 		{
-			path: '../FoundersGroteskTest-Regular.otf',
+			path: '../TextaRegular.ttf',
 			weight: '400',
 			style: 'normal',
 		},
 		{
-			path: '../FoundersGroteskTest-RegularItalic.otf',
-			weight: '400',
-			style: 'italic',
-		},
-		{
-			path: '../FoundersGroteskTest-Medium.otf',
-			weight: '500',
+			path: '../TextaBold.ttf',
+			weight: '600',
 			style: 'normal',
-		},
-		{
-			path: '../FoundersGroteskTest-MediumItalic.otf',
-			weight: '500',
-			style: 'italic',
 		},
 	],
 	display: 'swap',
-	variable: '--font-founders-grotesk',
+	variable: '--font-texta',
 })
 
 export default async function RootLayout({
@@ -41,15 +32,15 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={`${FoundersGrotesk.variable}`}>
+		<html lang="en" className={`${Texta.variable}`}>
 			<head>
-				<link
-					rel="stylesheet"
-					href="https://use.typekit.net/mty4mks.css"
-				></link>
+				<Script
+					src="//au.fw-cdn.com/20888060/320202.js"
+					strategy="lazyOnload"
+				></Script>
 			</head>
 
-			<body className="bg-canvas text-licorice">
+			<body className="bg-canvas text-ink">
 				<SkipToContent />
 				<Announcement />
 				<div className="relative">
